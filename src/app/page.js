@@ -16,12 +16,12 @@ const socialMediaLinks = [
 export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false); // Add loading state
+  const [generatedLink, setGeneratedLink] = useState(''); // State to store the API response
+  const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
     // Move the API request logic here
-    if (prompt&& loading) {
-      //setLoading(true); // Set loading to true before sending the request
-
+    if (prompt && loading) {
       const data = JSON.stringify({
         "prompt": [prompt]
       });
@@ -32,6 +32,10 @@ export default function Home() {
       xhr.addEventListener("readystatechange", function () {
         if (this.readyState === this.DONE) {
           setLoading(false); // Set loading to false after receiving the response
+          //setResponseText(this.responseText); // Store the API response
+          const response = JSON.parse(this.responseText);
+          const content = response.content; // Extract the "content" value
+          setGeneratedLink(content); // Store the generated link
           console.log(this.responseText);
         }
       });
@@ -49,8 +53,23 @@ export default function Home() {
   };
   const handleGenerateImage = () => {
     setLoading(true); // Set loading to true when "Generate Image" button is clicked
+    setGeneratedLink(''); // Clear the generatedLink when generating a new image
+    setCopySuccess(false); // Reset the copy success state
+    setCopySuccess(true);
+
   };
 
+
+  const handleCopyImage = () => {
+
+    if (generatedLink) {
+      navigator.clipboard.writeText(generatedLink);
+      setCopySuccess(true); // Set copy success to true
+      setTimeout(() => {
+        setCopySuccess(false); // Reset copy success after 5 seconds
+      }, 3000); // 5000 milliseconds = 5 seconds
+    }
+  };
   return (
 
     <main className={styles.main}>
@@ -84,7 +103,6 @@ export default function Home() {
               className={`${styles.inputField}`}
               style={{ color: 'black' }}
             />
-            {/*     <button className={`${styles.generateButton}`} onClick={() => setPrompt(prompt)}> */}
             <button
               className={`${styles.generateButton}`}
               onClick={() => {
@@ -92,25 +110,38 @@ export default function Home() {
                 setPrompt(prompt); // Set the prompt and initiate the API request
               }}
             >
-              Generate Image
+              {loading ? 'Generating...' : 'Generate Image'}
             </button>
-            {loading && <p className={`${styles.blackText}`} >Loading...</p>}
+
           </div>
+
 
           <h4 className={`${styles.boxSubTitle} ${styles.blackText} `}>
             Response
           </h4>
-          <div className={`${styles.inputBox}`}>
-            <textarea
-              type="text"
-              placeholder="Here you will get the  url"
-              className={`${styles.inputField}`}
-              readOnly
-            />
-            <button className={`${styles.generateButton}`}>
+          <div className={`${styles.responseBox}`}>
+            {/* Display the generated image */}
+            <div className={`${styles.imageBox}`}>
+              {generatedLink ? (
+                <img
+                  src={generatedLink}
+                  alt="Generated Image"
+                  className={`${styles.generatedImage}`}
+                />
+              ) : (
+                <p className={`${styles.placeholderText} ${styles.blackText}`}>
+                  Your image will display here</p>
+              )
+              }  </div>
+            <button className={`${styles.generateButton}`}
+              onClick={handleCopyImage}
+            >
               Copy Image
             </button>
-
+           
+            {copySuccess && (
+              <p className={`${styles.copySuccess} ${styles.blackText}`}>copied !</p>
+            )}
           </div>
         </div>
 
@@ -118,5 +149,5 @@ export default function Home() {
       © 2023 Worqhat. All rights reserved.
 
     </main>
-  )
+  );
 }

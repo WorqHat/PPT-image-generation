@@ -243,7 +243,7 @@
   margin: 10px 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   width: 85%; 
-  height: 750px; 
+  height: 1000px; 
 }
 
 /* Styles for the box title */
@@ -295,10 +295,11 @@
   color: black;
 }
 
+
 .insieBox {
   display: flex;
   flex-direction: column; /* Display elements in a column */
-  margin: 20px; 
+ margin-top: 10px;  
   padding: 8px 20px;
   width: 50%;
 }
@@ -309,6 +310,28 @@
    justify-content: space-between; /* Add this to evenly space the elements */
 
 }
+.responseBox{
+  display: flex;
+  flex-direction: row; 
+   padding: 10px;
+   justify-content: space-between; /* Add this to evenly space the elements */
+     
+}
+/* page.module.css */
+.responseBox {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  justify-content: space-between;
+  margin-top: 20px; /* Add top margin for spacing */
+}
+
+.generatedImage ,
+.generateButton ,
+.copySuccess {
+  margin-left: 20px;
+}
+
 
 /* Add space between elements */
 .boxSubTitle,
@@ -317,3 +340,31 @@
   margin-bottom: 10px; /* Add margin between elements */
 }
 
+
+/* page.module.css */
+.generatedImage {
+  max-width: auto;
+  height: auto;
+  margin-bottom: 10px;
+}
+.responseBox {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.imageBox {
+  display: flex;
+  align-items: center;
+  border-radius: 15px; 
+ width: 205%; 
+  height: 550px;  
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.93);
+}
+.copySuccess {
+  color: green; /* Change the color to your preference */
+  font-size: 14px; /* Adjust the font size as needed */
+  margin-top: 5px; /* Add some space above the message */
+}
