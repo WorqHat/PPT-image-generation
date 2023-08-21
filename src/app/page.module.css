@@ -240,27 +240,15 @@
   background-color: white;
   border-radius: 15px; /* Adjust the radius as needed */
   padding: 20px;
-  margin: 10px 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
   width: 85%; 
-  height: 1000px; 
-}
-
-/* Styles for the box title */
-.boxTitle {
-  font-size: 45px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: center; 
-  padding: 20px; 
-}
-.boxSubTitle{
-  font-size: 25px;
+  height: 900px;
 }
 
 /* page.module.css */
 .generateButton {
-  background-color: #5982a8; /* Blue background color */
+  background-color: #000000; /* Blue background color */
   color: #fff; /* White text color */
   padding: 8px 20px; /* Add padding around the button text */
   border: none;
@@ -277,7 +265,9 @@
 }
 
 .generateButton:hover {
-  background-color: rgb(10, 10, 10); /* Darker blue background color on hover */
+  /* background-color:  */
+    background: #134572;  
+  /* rgb(10, 10, 10); Darker blue background color on hover */
 }
 /* page.module.css */
 .inputField {
@@ -285,86 +275,60 @@
   padding: 10px;
   border-radius: 5px;
   background-color: white; /* Change background color to white */
-  border: 1px solid #706f6f; /* Change border color to a lighter gray */
+  border: 1px solid #000000; /* Change border color to a lighter gray */
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: -5px;
   resize: vertical;
-  width: 300%;
+  width: 420%;
   height: 50px; /* Set the desired height */
   color: black;
 }
 
-
-.insieBox {
-  display: flex;
-  flex-direction: column; /* Display elements in a column */
- margin-top: 10px;  
-  padding: 8px 20px;
-  width: 50%;
-}
 .inputBox {
   display: flex;
   flex-direction: row; 
    padding: 10px;
    justify-content: space-between; /* Add this to evenly space the elements */
+margin-bottom: 20px;
+margin-left: 5px;
+margin-right: 5px; 
+}
 
-}
-.responseBox{
-  display: flex;
-  flex-direction: row; 
-   padding: 10px;
-   justify-content: space-between; /* Add this to evenly space the elements */
-     
-}
 /* page.module.css */
 .responseBox {
   display: flex;
-  flex-direction: row;
   padding: 10px;
   justify-content: space-between;
-  margin-top: 20px; /* Add top margin for spacing */
-}
+  margin-top: 5px;
+margin-left: 5px;
+margin-right: 5px; }
 
-.generatedImage ,
+/* .generatedImage ,
 .generateButton ,
 .copySuccess {
   margin-left: 20px;
-}
-
-
-/* Add space between elements */
-.boxSubTitle,
-.inputField,
-.generateButton {
-  margin-bottom: 10px; /* Add margin between elements */
-}
-
+} */
 
 /* page.module.css */
 .generatedImage {
   max-width: auto;
   height: auto;
-  margin-bottom: 10px;
-}
-.responseBox {
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
-  justify-content: space-between;
-  margin-top: 20px;
 }
 
 .imageBox {
-  display: flex;
+  
   align-items: center;
-  border-radius: 15px; 
- width: 205%; 
-  height: 550px;  
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.93);
+  border-radius: 10px; 
+  resize: vertical;
+  width: 90%;
+  height: 550px;   
+  border: 1px solid #000000;
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.20); */
 }
 .copySuccess {
   color: green; /* Change the color to your preference */
   font-size: 14px; /* Adjust the font size as needed */
   margin-top: 5px; /* Add some space above the message */
 }
+

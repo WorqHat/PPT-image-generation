@@ -16,8 +16,11 @@ const socialMediaLinks = [
 export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false); // Add loading state
-  const [generatedLink, setGeneratedLink] = useState(''); // State to store the API response
+//  const [generatedLink, setGeneratedLink] = useState('https://worqhat.s3.ap-south-1.amazonaws.com/outputs/1692603817264.png'); // Use the dummy link
+ 
   const [copySuccess, setCopySuccess] = useState(false);
+ // Replace the useEffect and loading state with dummy image link
+ const generatedLink = 'https://worqhat.s3.ap-south-1.amazonaws.com/outputs/1692603817264.png';
 
   useEffect(() => {
     // Move the API request logic here
@@ -58,9 +61,18 @@ export default function Home() {
     setCopySuccess(true);
 
   };
+  const handleDownloadImage = () => {
+    if (generatedLink) {
+      const link = document.createElement('a');
+      link.href = generatedLink;
+      link.download = 'generated_image.png'; // Set the desired file name
+      link.target = '_blank';
+      link.click();
+    }
+  };
+  
 
-
-  const handleCopyImage = () => {
+  const handleCopylink = () => {
 
     if (generatedLink) {
       navigator.clipboard.writeText(generatedLink);
@@ -70,6 +82,29 @@ export default function Home() {
       }, 3000); // 5000 milliseconds = 5 seconds
     }
   };
+  const handleCopyImage = () => {
+    if (generatedLink) {
+      fetch(generatedLink)
+        .then(response => response.blob())
+        .then(blob => {
+          navigator.clipboard.write([
+            new ClipboardItem({
+              [blob.type]: blob
+            })
+          ]);
+  
+          setCopySuccess(true); // Set copy success to true
+          setTimeout(() => {
+            setCopySuccess(false); // Reset copy success after 5 seconds
+          }, 3000); // 5000 milliseconds = 5 seconds
+        })
+        .catch(error => {
+          console.error('Error copying image:', error);
+          // Handle error if copying fails
+        });
+    }
+  };
+  
   return (
 
     <main className={styles.main}>
@@ -83,69 +118,81 @@ export default function Home() {
           </a>
         ))}
       </div>
-
+      
       <div className={`${styles.whiteBox}`}>
-        <h1 className={`${styles.boxTitle} ${styles.blackText}`
-        }>
-          <strong>AI Image Generator by WorqHat</strong>
+        
+        <h1 className=" text-4xl font-bold mb-6" style={{  color: "black" ,textAlign:'center',marginTop: "30px"}}><strong>
+        AI Image Generator by WorqHat</strong>
         </h1>
-        <hr className={`${styles.titleLine}`} />
-        <div className={`${styles.insieBox}`}>
-          <h4 className={`${styles.boxSubTitle} ${styles.blackText}`}>
-            User Input
-          </h4>
+        
+        <div className="flex flex-col md:flex-row">
+          <div className="flex-1 mb-4 md:mb-0 md:mr-4">
+     
+        <h2 className='m-1 p-1 font-bold' style={{  color: "black" ,marginTop: "20px"}}>User Input</h2>
           <div className={`${styles.inputBox}`}>
             <input
               type="text"
               value={prompt}
               onChange={handlePromptChange}
-              placeholder="Write Instruction to Generate Image using our AI "
+              placeholder="Describe what you want and directly click the 'Generate' button to  Generate Image"
               className={`${styles.inputField}`}
               style={{ color: 'black' }}
             />
             <button
               className={`${styles.generateButton}`}
               onClick={() => {
-                setLoading(true); // Set loading to true when button is clicked
-                setPrompt(prompt); // Set the prompt and initiate the API request
+                setLoading(true); 
+                setPrompt(prompt); 
               }}
             >
               {loading ? 'Generating...' : 'Generate Image'}
             </button>
+            </div>
 
-          </div>
 
+          <h2 className='m-1 p-1 font-bold' style={{  color: "black" }}>Response</h2>
+            <div className={`${styles.responseBox}`}>
+              {/* Display the generated image */}
+              <div className= {`${styles.imageBox}`}>
+                {generatedLink ? (
+                  <img
+                    src={generatedLink}
+                    alt="Generated Image"
+                    className={`${styles.generatedImage}`}
+                  />
+                ) : (
+                  <p  style={{ color: "black", textAlign: "center", margin: "380px" }}> Your image will display here</p>
+                )
+                }
+              </div>
+              <div className={`${styles.buton}`}>
+              <button className={`${styles.generateButton}`}
+                onClick={handleCopyImage}
+              >
+                Copy Image
+              </button>
+ {copySuccess && (
+                <p className={`${styles.copySuccess} ${styles.blackText}`}>copied !</p>
+              )}
 
-          <h4 className={`${styles.boxSubTitle} ${styles.blackText} `}>
-            Response
-          </h4>
-          <div className={`${styles.responseBox}`}>
-            {/* Display the generated image */}
-            <div className={`${styles.imageBox}`}>
-              {generatedLink ? (
-                <img
-                  src={generatedLink}
-                  alt="Generated Image"
-                  className={`${styles.generatedImage}`}
-                />
-              ) : (
-                <p className={`${styles.placeholderText} ${styles.blackText}`}>
-                  Your image will display here</p>
-              )
-              }  </div>
-            <button className={`${styles.generateButton}`}
-              onClick={handleCopyImage}
-            >
-              Copy Image
-            </button>
-           
-            {copySuccess && (
-              <p className={`${styles.copySuccess} ${styles.blackText}`}>copied !</p>
-            )}
-          </div>
+              <button className={`${styles.generateButton}`}
+                onClick={handleDownloadImage}
+              >
+                download Image
+              </button>
+              <button className={`${styles.generateButton}`}
+                onClick={handleCopylink}
+              >
+                Copy Image Link
+              </button>
+              </div>
+            </div>
+      
+        </div>
         </div>
 
       </div>
+      
       © 2023 Worqhat. All rights reserved.
 
     </main>
