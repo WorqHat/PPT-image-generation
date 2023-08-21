@@ -19,6 +19,8 @@
   margin: 20px;
   width: 85%;
   height: 900px;
+  
+  margin-top: -3%;
 }
 
 /* page.module.css */
@@ -116,11 +118,12 @@
 
 .imageBox {
   align-items: center;
-  border-radius: 10px;
+  border-radius: 8px;
   resize: vertical;
-  width: 145%;
+  width: 2000px;
   height: 570px;
   border: 1px solid #000000;
+  margin-bottom: -5px;
 }
 
 .copySuccess {
@@ -144,6 +147,7 @@ font-weight: 700;
   color: #000000;
 font-size: 1.5rem;
 font-weight: 600;
+margin-top: -5px;
 }
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
@@ -172,7 +176,7 @@ font-size: 0.7rem;
   }
   
   .imageBox {
-width: 250%;
+width: 1000px;
     height: 530px;
   }
   .responseBox {
@@ -199,7 +203,7 @@ width: 250%;
   }
 
   .imageBox {
-    width: 160%;
+    width: 1000px;
     height: 275px;
   }
   .whiteBox {
@@ -232,20 +236,21 @@ width: 250%;
   padding: 10px;
   justify-content: space-between;
   /* Add this to evenly space the elements */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-left: 3px;
   margin-right: 0.5px;
 }
 .heading{
   color: #000000;
 text-align: center;
-font-size: 2rem;
-font-weight: 700;
+font-size: 1.5rem;
+font-weight: 650;
+margin-bottom: 20px;
 }
 .headings{
   color: #000000;
 font-size: 1.3rem;
-font-weight: 600;
+font-weight: 580;
 }
 .generateButtons{
   width: 55%;

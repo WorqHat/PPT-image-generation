@@ -16,12 +16,12 @@ const socialMediaLinks = [
 export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false); // Add loading state
-   const [generatedLink, setGeneratedLink] = useState(''); // Use the dummy link
+  // const [generatedLink, setGeneratedLink] = useState(''); // Use the dummy link
 
   const [copySuccess, setCopySuccess] = useState(false);
 
   // Replace the useEffect and loading state with dummy image link
-  // const generatedLink = 'https://worqhat.s3.ap-south-1.amazonaws.com/outputs/1692603817264.png';
+   const generatedLink = 'https://worqhat.s3.ap-south-1.amazonaws.com/outputs/1692603817264.png';
 
   useEffect(() => {
     // Move the API request logic here
@@ -62,16 +62,35 @@ export default function Home() {
     setCopySuccess(true);
 
   };
+  // const handleDownloadImage = () => {
+  //   if (generatedLink) {
+  //     const link = document.createElement('a');
+  //     link.href = generatedLink;
+  //     link.download = 'generated_image.png'; // Set the desired file name
+  //     link.target = '_blank';
+  //     link.click();
+  //   }
+  // };
+
   const handleDownloadImage = () => {
     if (generatedLink) {
-      const link = document.createElement('a');
-      link.href = generatedLink;
-      link.download = 'generated_image.png'; // Set the desired file name
-      link.target = '_blank';
-      link.click();
+      fetch(generatedLink)
+        .then(response => response.blob())
+        .then(blob => {
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = 'generated_image.png'; // Set the desired file name
+          link.click();
+          URL.revokeObjectURL(url);
+        })
+        .catch(error => {
+          console.error('Error downloading image:', error);
+          // Handle error if downloading fails
+        });
     }
   };
-
+  
 
   const handleCopylink = () => {
 
@@ -193,7 +212,7 @@ export default function Home() {
               <button className={`${styles.generateButtons}`}
                 onClick={handleDownloadImage}
               >
-                download Image
+                Download Image
               </button>
 
               <button className={`${styles.generateButtons}`}
