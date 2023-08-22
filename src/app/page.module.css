@@ -6,8 +6,10 @@
   padding: 6rem;
   min-height: 100vh;
 }
+
 .blackText {
   color: black;
+  font-size: ;
 }
 
 /* Styles for the white background box */
@@ -15,249 +17,119 @@
   background-color: white;
   border-radius: 15px;
   /* Adjust the radius as needed */
-  padding: 20px;
-  margin: 20px;
+  padding: 40px;
+
   width: 85%;
-  height: 900px;
-  
-  margin-top: -3%;
+  height: 750px;
+  /* margin-top: -2%; */
 }
 
-/* page.module.css */
-.generateButton {
-  background-color: #000000;
-  color: #fff;
-  padding: 8px 8px;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  /* Adjust as needed */
-  width: 100%;
-  height: 50px;
-  /* Set the desired height */
-  font-size: 0.9rem;
-}
-
-.generateButton:hover {
-  background: #134572;
-}
-.generateButtons {
-  background-color: #000000;
-  color: #fff;
-  padding: 8px 8px;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  /* Adjust as needed */
-  width: 100%;
-  height: 50px;
-  /* Set the desired height */
-  font-size: 0.9rem;
-}
-
-.generateButtons:hover {
-  background: #134572;
-}
-
-.inputField {
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: white;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: -5px;
-  resize: vertical;
-  width: 420%;
-  height: 50px;
-  /* Set the desired height */
-  color: black;
-  font-size: 0.9rem;
-}
-
-
-.inputBox {
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-/* page.module.css */
-.responseBox {
-  display: flex;
-  flex-wrap: nowrap;
-  padding: 10px;
-  justify-content: space-between;
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-
-/* page.module.css */
-.generatedImage {
-  max-width: auto;
-  height: auto;
-  margin-left: 25%;
-  margin-top: 20px;
-}
-
-.imageBox {
-  align-items: center;
-  border-radius: 8px;
-  resize: vertical;
-  width: 2000px;
-  height: 570px;
-  border: 1px solid #000000;
-  margin-bottom: -5px;
-}
-
-.copySuccess {
-  color: green;
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-.reserve{
-  font-size: 0.9rem;
-  color: #fff;
-}
 /*h1 style={{  color: "black" ,textAlign:'center',margin: "15px", fontSize:"2.25rem",fontWeight:"700" }}><strong> */
-.heading{
+.heading {
   color: #000000;
-text-align: center;
-font-size: 2.25rem;
-font-weight: 700;
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
-.headings{
+
+.headings {
   color: #000000;
-font-size: 1.5rem;
-font-weight: 600;
-margin-top: -5px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: -5px;
 }
+
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
-  .generatedImage {
-     margin-left: 55px;
-    margin-right: -10px;
-    margin-top: 8px;
-  }
-
-  .generateButton {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    width: 100%;
-    height: 50px;
-    font-size: 0.7rem;
-  }
-  .generateButtons{
-    width: 30%;
-    font-size: 0.6rem;
-    padding: 5;
-  }
-  .inputField {
-font-size: 0.7rem;
-  }
-  
-  .imageBox {
-width: 1000px;
-    height: 530px;
-  }
-  .responseBox {
-    display: flex;
-   flex-wrap: wrap;
-  }
-  .whiteBox {
- 
-   height: 1000px;
- }
-
- .buton{
-  justify-content: center;
-  margin-left: 90px;
- }
-}
-@media (min-width: 300px) and (max-width: 701px) {
-
-  .generateButton { font-size: 0.7rem;
-    padding: 10px;
-  }
-
-  .inputField { font-size: 0.7rem;
-  }
 
   .imageBox {
     width: 1000px;
-    height: 275px;
+    height: 530px;
   }
+
   .whiteBox {
-     margin-top: -23px;
+
+    height: 1000px;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 701px) {
+
+  .whiteBox {
+    margin-top: -23px;
     width: 260%;
     height: 850px;
   }
-  .responseBox {
-    display: flex;
-   flex-wrap: wrap;
+
+  .heading {
+    color: #000000;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 650;
+    margin-bottom: 20px;
   }
-  .generatedImage {
-    max-width: 250px;
-    height: 250px;
-  margin-left: 8px;
-  margin-top: 10px;
-  margin-bottom: -15px;
+
+  .headings {
+    color: #000000;
+    font-size: 1.3rem;
+    font-weight: 580;
   }
-  .reserve{
-    font-size: 0.7rem;
-    
-  }
-  .buton{
-    justify-content: center;
-   }
-  
-.inputBox {
+
+
+}
+
+
+.button {
+  padding: 15px;
+  /* margin: 5px; */
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 33px;
+  background:
+    linear-gradient(rgb(166, 129, 221), rgb(44, 44, 44));
+}
+
+.ptag {
+  color: #706969;
+  font-size: 1rem;
+  display: grid;
+  place-items: center;
+}
+
+.ptags {
+  color: #000000;
+  font-size: 1.3rem;
+  display: grid;
+  place-items: center;
+  padding-bottom: 5px;
+}
+
+.boxWithContent {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 30px;
+  background-color: #f5f5f5;
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  padding: 10px;
-  justify-content: space-between;
-  /* Add this to evenly space the elements */
-  margin-bottom: 10px;
-  margin-left: 3px;
-  margin-right: 0.5px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-.heading{
-  color: #000000;
-text-align: center;
-font-size: 1.5rem;
-font-weight: 650;
-margin-bottom: 20px;
+.boxWithContents {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 30px;
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-.headings{
-  color: #000000;
-font-size: 1.3rem;
-font-weight: 580;
-}
-.generateButtons{
-  width: 55%;
-  font-size: 0.6rem;
-  padding: 0;
-}
-.buton{
-  margin-left: 60px;
-}
+
+.centerContent {
+  text-align: center;
 }
