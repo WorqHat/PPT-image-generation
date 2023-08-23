@@ -45,6 +45,7 @@ export default function Home() {
 
       xhr.open("POST", "https://api.worqhat.com/api/ai/images/generate/v2");
       xhr.setRequestHeader("Authorization", "Bearer sk-5ad64bcfb0d441bdbd6c8ab9f07b3647");
+
       xhr.setRequestHeader("Content-Type", "application/json");
 
       xhr.send(data);
