@@ -12,37 +12,56 @@ const socialMediaLinks = [
   { name: 'GitHub', icon: '/github-icon.svg', url: 'https://github.com/worqhat' },
 ];
 export default function Home() {
- 
-  
-  useEffect(() => {
-    function handleFileInputChange(event) {
-    const selectedFile = event.target.files[0]; // Get the selected file
-    if (!selectedFile) {
-      return;
-    }
-  
+  const [extractedText, setExtractedText] = useState('');
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadedFileName, setUploadedFileName] = useState('');
+  const fileInputRef = React.createRef();
+
+  const handleUpload = async (event) => {
+    setIsUploading(true);
+    // console.log(`Selected file: ${file.name}`); // Print the selected file name to the console
+
+    const file = event.target.files[0];
+    if (file) {
+      setUploadedFileName(file.name);
+
       const form = new FormData();
-      form.append("audio", selectedFile);
+      form.append("audio", file);
+ console.log(`Selected file: ${file.name}`); // Print the selected file name to the console
 
       const options = {
         method: 'POST',
         headers: {
           Authorization: 'Bearer sk-3ce895380dec49f7ae3c220c1dc1c3fe',
-          'Content-Type': 'multipart/form-data'
         },
-        body:form,
+        body: form,
       };
 
-      // options.body = form;
-
-      fetch('https://api.worqhat.com/api/ai/speech-text', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-
+      try {
+        const response = await fetch('https://api.worqhat.com/api/ai/speech-text', options);
+        const data = await response.json();
+        if (data && data.text) {
+          setExtractedText(data.text);
+          console.log("Extracted Text:", data.text); // Log the extracted text
+     
+        }
+        else{
+          console.log("error");
+        }
+        console.log("response",response);
+      } catch (error) {
+        console.log(error);
+      }
     }
-  });
-
+    setIsUploading(false);
+  };
+  // const handleUploadButtonClick = () => {
+  //   fileInputRef.current.click(); // Trigger the hidden file input
+  // };
+  const handleUploadButtonClick = () => {
+    handleUpload({ target: { files: [fileInputRef.current.files[0]] } });
+  };
+  
   return (
 
     <main className={styles.main}>
@@ -71,19 +90,47 @@ export default function Home() {
 
         <div className={`${styles.headings}`}>Upload</div>
         <div className={`${styles.boxWithContent}`}>
-          <div className={`${styles.centerContent}`}>
-            <p className={` ${styles.ptags}`}>
-              Drop an audio file here
-            </p>
-            <p className={`${styles.ptag}`}>
-              or click to browse
-            </p>
-          </div>
+        <label className={`${styles.uploadLabel}`}>
+              <input
+               ref={fileInputRef}
+                type="file"
+                accept="audio/*"
+                onChange={handleUpload}
+              
+                hidden 
+              />  <div className={`${styles.centerContent}`}>
+          
+              {/* Upload Audio */}
 
+           {isUploading ? (
+                <div className={`${styles.blackText}`}>
+                  {/* Add your loader component here */}
+                  Uploading...
+                </div>
+              ) : (
+                <>
+                  {uploadedFileName ? (
+                    <p className={` ${styles.ptags}`}>
+                      Uploaded: {uploadedFileName}
+                    </p>
+                  ) : (
+                    <>
+                  <p className={` ${styles.ptags}`}>
+                    Drop an audio file here
+                  </p>
+                  <p className={`${styles.ptag}`}>
+                    or click to browse
+                  </p>
+                </>
+              )}
+              </>
+              )}
+          </div>
+          </label>
         </div>
       <  div className={`${styles.centerContent}`}>
            
-        <button className={`${styles.button}`} >
+        <button className={`${styles.button}`} onClick={handleUploadButtonClick}>
           Upload File
         </button>
 </div>
