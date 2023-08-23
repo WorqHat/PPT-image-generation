@@ -110,10 +110,11 @@
 
 /* page.module.css */
 .generatedImage {
-  max-width: auto;
-  height: auto;
-  margin-left: 25%;
-  margin-top: 20px;
+ display: block;
+  margin: 0 auto;
+    max-width: auto;
+    height: auto;
+    margin-top: 25px;
 }
 
 .imageBox {
@@ -149,12 +150,13 @@ font-size: 1.5rem;
 font-weight: 600;
 margin-top: -5px;
 }
+
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .generatedImage {
-     margin-left: 55px;
-    margin-right: -10px;
-    margin-top: 8px;
+    margin-top: 30px;
+    max-width: 400px;
+    height: 400px;
   }
 
   .generateButton {
@@ -177,7 +179,7 @@ font-size: 0.7rem;
   
   .imageBox {
 width: 1000px;
-    height: 530px;
+    height: 500px;
   }
   .responseBox {
     display: flex;
@@ -204,7 +206,7 @@ width: 1000px;
 
   .imageBox {
     width: 1000px;
-    height: 275px;
+    height: 350px;
   }
   .whiteBox {
      margin-top: -23px;
@@ -216,11 +218,9 @@ width: 1000px;
    flex-wrap: wrap;
   }
   .generatedImage {
-    max-width: 250px;
-    height: 250px;
-  margin-left: 8px;
-  margin-top: 10px;
-  margin-bottom: -15px;
+    margin-top: 25px;
+    max-width: 300px;
+    height: auto;
   }
   .reserve{
     font-size: 0.7rem;
