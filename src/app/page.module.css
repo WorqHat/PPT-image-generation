@@ -46,28 +46,7 @@
 .generateButton:hover {
   background: #134572;
 }
-.generateButtons {
-  background-color: #000000;
-  color: #fff;
-  padding: 8px 8px;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  /* Adjust as needed */
-  width: 100%;
-  height: 50px;
-  /* Set the desired height */
-  font-size: 0.9rem;
-}
 
-.generateButtons:hover {
-  background: #134572;
-}
 
 .inputField {
   border: 1px solid #ccc;
@@ -122,7 +101,7 @@
   border-radius: 8px;
   resize: vertical;
   width: 2000px;
-  height: 570px;
+  height: 600px;
   border: 1px solid #000000;
   margin-bottom: -5px;
 }
@@ -168,18 +147,13 @@ margin-top: -5px;
     height: 50px;
     font-size: 0.7rem;
   }
-  .generateButtons{
-    width: 30%;
-    font-size: 0.6rem;
-    padding: 5;
-  }
   .inputField {
 font-size: 0.7rem;
   }
   
   .imageBox {
 width: 1000px;
-    height: 500px;
+    height: 530px;
   }
   .responseBox {
     display: flex;
@@ -206,7 +180,7 @@ width: 1000px;
 
   .imageBox {
     width: 1000px;
-    height: 350px;
+    height: 380px;
   }
   .whiteBox {
      margin-top: -23px;
@@ -251,11 +225,6 @@ margin-bottom: 20px;
   color: #000000;
 font-size: 1.3rem;
 font-weight: 580;
-}
-.generateButtons{
-  width: 55%;
-  font-size: 0.6rem;
-  padding: 0;
 }
 .buton{
   margin-left: 60px;

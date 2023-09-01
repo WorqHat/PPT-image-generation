@@ -15,12 +15,12 @@ const socialMediaLinks = [
 export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false); // Add loading state
-  const [generatedLink, setGeneratedLink] = useState(''); // Use the dummy link
+  //const [generatedLink, setGeneratedLink] = useState(''); // Use the dummy link
 
   const [copySuccess, setCopySuccess] = useState(false);
 
   // Replace the useEffect and loading state with dummy image link
- //  const generatedLink = 'https://worqhat.s3.ap-south-1.amazonaws.com/outputs/1692603817264.png';
+  const generatedLink = 'https://worqhat.s3.ap-south-1.amazonaws.com/outputs/1692603817264.png';
 
   useEffect(() => {
     // Move the API request logic here
@@ -63,69 +63,7 @@ xhr.setRequestHeader("Authorization", "Bearer sk-65b07d20f9cf477c9e3096bdde28bc2
     setCopySuccess(true);
 
   };
-  // const handleDownloadImage = () => {
-  //   if (generatedLink) {
-  //     const link = document.createElement('a');
-  //     link.href = generatedLink;
-  //     link.download = 'generated_image.png'; // Set the desired file name
-  //     link.target = '_blank';
-  //     link.click();
-  //   }
-  // };
-
-  const handleDownloadImage = () => {
-    if (generatedLink) {
-      fetch(generatedLink)
-        .then(response => response.blob())
-        .then(blob => {
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = url;
-          link.download = 'generated_image.png'; // Set the desired file name
-          link.click();
-          URL.revokeObjectURL(url);
-        })
-        .catch(error => {
-          console.error('Error downloading image:', error);
-          // Handle error if downloading fails
-        });
-    }
-  };
   
-
-  const handleCopylink = () => {
-
-    if (generatedLink) {
-      navigator.clipboard.writeText(generatedLink);
-      setCopySuccess(true); // Set copy success to true
-      setTimeout(() => {
-        setCopySuccess(false); // Reset copy success after 5 seconds
-      }, 3000); // 5000 milliseconds = 5 seconds
-    }
-  };
-  const handleCopyImage = () => {
-    if (generatedLink) {
-      fetch(generatedLink)
-        .then(response => response.blob())
-        .then(blob => {
-          navigator.clipboard.write([
-            new ClipboardItem({
-              [blob.type]: blob
-            })
-          ]);
-
-          setCopySuccess(true); // Set copy success to true
-          setTimeout(() => {
-            setCopySuccess(false); // Reset copy success after 5 seconds
-          }, 3000); // 5000 milliseconds = 5 seconds
-        })
-        .catch(error => {
-          console.error('Error copying image:', error);
-          // Handle error if copying fails
-        });
-    }
-  };
-
   return (
 
     <main className={styles.main}>
@@ -152,15 +90,7 @@ xhr.setRequestHeader("Authorization", "Bearer sk-65b07d20f9cf477c9e3096bdde28bc2
           <div className={`${styles.headings}`}>User Input</div>
 
           <div className={`${styles.inputBox}`}>
-            {/* <input
-              type="text"
-              value={prompt}
-              onChange={handlePromptChange}
-              placeholder="Describe what you want and directly click the 'Generate' button to  Generate Image"
-              className={`${styles.inputField}`}
-              
-              style={{ color: 'black' }}
-            /> */}
+           
             <input
               type="text"
               value={prompt}
@@ -194,33 +124,29 @@ xhr.setRequestHeader("Authorization", "Bearer sk-65b07d20f9cf477c9e3096bdde28bc2
             {/* Display the generated image */}
             <div className={`${styles.imageBox}`}>
               {generatedLink ? (
-                <img
-                  src={generatedLink}
-                  alt="Generated Image"
-                  className={`${styles.generatedImage}`}
-                />
+                
+             
+                <div>
+                   <p style={{ color: 'gray', textAlign: 'center', marginTop: '10px'}}>
+                  Click on the image to download
+                </p>
+                <a href={generatedLink} target="_blank" rel="noopener noreferrer" download>
+                  <img
+                    src={generatedLink}
+                    alt="Generated Image"
+                    className={styles.generatedImage} // Make sure to define this style
+                     />
+                </a>
+               
+              </div>
               ) : (
                 <p style={{ color: "gray", textAlign: "center", content: "center", marginTop: "20px" }}> Your image will display here</p>
               )
               }
             </div>
             <div className={`${styles.buton}`}>
-              <button className={`${styles.generateButtons}`}
-                onClick={handleCopyImage}
-              >
-                Copy Image
-              </button>
-              <button className={`${styles.generateButtons}`}
-                onClick={handleDownloadImage}
-              >
-                Download Image
-              </button>
-
-              <button className={`${styles.generateButtons}`}
-                onClick={handleCopylink}
-              >
-                Copy Image Link
-              </button>
+            
+              
 
             </div>
           </div>
