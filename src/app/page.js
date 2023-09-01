@@ -15,12 +15,12 @@ const socialMediaLinks = [
 export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false); // Add loading state
-  //const [generatedLink, setGeneratedLink] = useState(''); // Use the dummy link
+  const [generatedLink, setGeneratedLink] = useState(''); // Use the dummy link
 
   const [copySuccess, setCopySuccess] = useState(false);
 
   // Replace the useEffect and loading state with dummy image link
-  const generatedLink = 'https://worqhat.s3.ap-south-1.amazonaws.com/outputs/1692603817264.png';
+ // const generatedLink = 'https://worqhat.s3.ap-south-1.amazonaws.com/outputs/1692603817264.png';
 
   useEffect(() => {
     // Move the API request logic here
