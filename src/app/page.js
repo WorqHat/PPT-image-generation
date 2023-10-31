@@ -37,8 +37,8 @@ export default function Home() {
           setLoading(false); // Set loading to false after receiving the response
           //setResponseText(this.responseText); // Store the API response
           const response = JSON.parse(this.responseText);
-          const data = response.data; 
-          setGeneratedLink(data); // Store the generated link
+          const image = response.image; // Extract the "content" value
+          setGeneratedLink(image); // Store the generated link
           console.log(this.responseText);
         }
       });
@@ -140,7 +140,7 @@ xhr.setRequestHeader("Authorization", "Bearer sk-815f9a4836b44791b0b44ac4f421284
                
               </div>
               ) : (
-                <p style={{ color: "gray", textAlign: "center", data: "center", marginTop: "20px" }}> Your image will display here</p>
+                <p style={{ color: "gray", textAlign: "center", image: "center", marginTop: "20px" }}> Your image will display here</p>
               )
               }
             </div>
