@@ -65,47 +65,69 @@ xhr.setRequestHeader("Authorization", "Bearer sk-815f9a4836b44791b0b44ac4f421284
   };
   
   return (
-
     <main className={styles.main}>
-      <div className='logo' style={{ position: 'absolute', top: '0', left: '0', margin: '1%', fontSize: 'medium' }}>
+      <div
+        className="logo"
+        style={{
+          position: "absolute",
+          top: "0",
+          left: "0",
+          margin: "1%",
+          fontSize: "medium",
+        }}
+      >
         <Image src="/logo.png" alt="Logo" width={100} height={50} />
       </div>
-      <div className='social-icons' style={{ position: 'absolute', top: '0', right: '0', margin: '10px', fontSize: 'medium', display: 'flex' }}>
+      <div
+        className="social-icons"
+        style={{
+          position: "absolute",
+          top: "0",
+          right: "0",
+          margin: "10px",
+          fontSize: "medium",
+          display: "flex",
+        }}
+      >
         {socialMediaLinks.map((link, index) => (
-          <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" style={{ margin: '0 5px' }}>
+          <a
+            key={index}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ margin: "0 5px" }}
+          >
             <Image src={link.icon} alt={link.name} width={30} height={40} />
           </a>
         ))}
       </div>
 
       <div className={`${styles.whiteBox}`}>
-
-
-        <div className={`${styles.heading}`}>
-          AI Image Generator by WorqHat
-        </div>
+        <div className={`${styles.heading}`}>AI Image Generator by WorqHat</div>
 
         <div className={`${styles.flex1}`}>
-
           <div className={`${styles.headings}`}>User Input</div>
 
           <div className={`${styles.inputBox}`}>
-           
             <input
               type="text"
               value={prompt}
               onChange={handlePromptChange}
               onFocus={() => {
-                const inputField = document.querySelector(`.${styles.inputField}`);
-                inputField.style.border = '1px solid #ff0000'; // Change to the desired border color
+                const inputField = document.querySelector(
+                  `.${styles.inputField}`
+                );
+                inputField.style.border = "1px solid #ff0000"; // Change to the desired border color
               }}
               onBlur={() => {
-                const inputField = document.querySelector(`.${styles.inputField}`);
-                inputField.style.border = '1px solid #000000'; // Change to the default border color
+                const inputField = document.querySelector(
+                  `.${styles.inputField}`
+                );
+                inputField.style.border = "1px solid #000000"; // Change to the default border color
               }}
               placeholder="Describe what you want and directly click the 'Generate Image' button "
               className={`${styles.inputField}`}
-              style={{ color: 'black' }}
+              style={{ color: "black" }}
             />
 
             <button
@@ -115,48 +137,72 @@ xhr.setRequestHeader("Authorization", "Bearer sk-815f9a4836b44791b0b44ac4f421284
                 setPrompt(prompt);
               }}
             >
-              {loading ? 'Generating...' : 'Generate Image'}
+              {loading ? "Generating..." : "Generate Image"}
             </button>
           </div>
 
           <div className={`${styles.headings}`}>Response</div>
-          <div className={`${styles.responseBox}`}>
+          <div
+            className={`${styles.responseBox}`}
+            style={{
+              maxHeight: "80vh" /* Adjust the height percentage as needed */,
+            }}
+          >
             {/* Display the generated image */}
             <div className={`${styles.imageBox}`}>
               {generatedLink ? (
-                
-             
                 <div>
-                   <p style={{ color: 'gray', textAlign: 'center', marginTop: '10px'}}>
-                  Click on the image to download
-                </p>
-                <a href={generatedLink} target="_blank" rel="noopener noreferrer" download>
-                  <img
-                    src={generatedLink}
-                    alt="Generated Image"
-                    className={styles.generatedImage} // Make sure to define this style
-                     />
-                </a>
-               
-              </div>
+                  <p
+                    style={{
+                      color: "gray",
+                      textAlign: "center",
+                      marginTop: "10px",
+                    }}
+                  >
+                    Click on the image to download
+                  </p>
+                  <a
+                    href={generatedLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download
+                  >
+                    <img
+                      src={generatedLink}
+                      alt="Generated Image"
+                      className={styles.generatedImage} // Make sure to define this style
+                    />
+                  </a>
+                </div>
               ) : (
-                <p style={{ color: "gray", textAlign: "center", image: "center", marginTop: "20px" }}> Your image will display here</p>
-              )
-              }
+                <p
+                  style={{
+                    color: "gray",
+                    textAlign: "center",
+                    image: "center",
+                    marginTop: "20px",
+                  }}
+                >
+                  {" "}
+                  Your image will display here
+                </p>
+              )}
             </div>
-            <div className={`${styles.buton}`}>
-            
-              
-
-            </div>
+            <div className={`${styles.buton}`}></div>
           </div>
-
-
         </div>
-
       </div>
       <div className={`${styles.reserve}`}>
-        © 2023 Worqhat. All rights reserved.
+        © 2023{" "}
+        <a
+          href="https://www.worqhat.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#33E6FF" }}
+        >
+          Worqhat
+        </a>
+        . All rights reserved.
       </div>
     </main>
   );

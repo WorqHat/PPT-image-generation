@@ -9,7 +9,7 @@
 .blackText {
   color: black;
 }
-
+/*/-//////////////////////*/
 /* Styles for the white background box */
 .whiteBox {
   background-color: white;
@@ -18,7 +18,7 @@
   padding: 20px;
   margin: 20px;
   width: 85%;
-  height: 900px;
+  height: 750px;
   
   margin-top: -3%;
 }
@@ -95,13 +95,13 @@
     height: auto;
     margin-top: 25px;
 }
-
+/*/*/
 .imageBox {
   align-items: center;
   border-radius: 8px;
   resize: vertical;
   width: 2000px;
-  height: 600px;
+  height: 450px;
   border: 1px solid #000000;
   margin-bottom: -5px;
 }
