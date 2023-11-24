@@ -26,7 +26,9 @@ export default function Home() {
     // Move the API request logic here
     if (prompt && loading) {
       const data = JSON.stringify({
-        "prompt": [prompt]
+        "prompt": [prompt],
+        "orientation": "landscape"
+
       });
 
       const xhr = new XMLHttpRequest();
@@ -145,7 +147,7 @@ xhr.setRequestHeader("Authorization", "Bearer sk-815f9a4836b44791b0b44ac4f421284
           <div
             className={`${styles.responseBox}`}
             style={{
-              maxHeight: "80vh" /* Adjust the height percentage as needed */,
+              maxHeight: "90vh" /* Adjust the height percentage as needed */,
             }}
           >
             {/* Display the generated image */}

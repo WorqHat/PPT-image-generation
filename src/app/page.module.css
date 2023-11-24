@@ -78,32 +78,41 @@
 /* page.module.css */
 .responseBox {
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: column;
+  /* Ensure a column layout */
+  align-items: center;
+  /* Center the content horizontally */
   padding: 10px;
-  justify-content: space-between;
   margin-top: 5px;
   margin-left: 5px;
   margin-right: 5px;
+  border: 1px solid #000000;
+  height: 450px;
+  /* Set the desired height */
+  overflow: hidden;
+  /* Hide any overflow to keep the container fixed */
 }
 
 
 /* page.module.css */
 .generatedImage {
- display: block;
+  max-width: 100%;
+  /* Ensure the image does not exceed the container width */
+  max-height: 100%;
+  /* Ensure the image does not exceed the container height */
+  width: auto;
+  height: auto;
+  display: block;
   margin: 0 auto;
-    max-width: auto;
-    height: auto;
-    margin-top: 25px;
 }
 /*/*/
 .imageBox {
-  align-items: center;
   border-radius: 8px;
-  resize: vertical;
-  width: 2000px;
-  height: 450px;
+  width: 100%;
+  /* Set width to 100% to fill the container */
+  height: 100%;
+  /* Set height to 100% to fill the container */
   border: 1px solid #000000;
-  margin-bottom: -5px;
 }
 
 .copySuccess {
@@ -152,12 +161,10 @@ font-size: 0.7rem;
   }
   
   .imageBox {
-width: 1000px;
-    height: 530px;
+height: 100%;
   }
   .responseBox {
-    display: flex;
-   flex-wrap: wrap;
+    height: 380px;
   }
   .whiteBox {
  
@@ -204,16 +211,7 @@ width: 1000px;
     justify-content: center;
    }
   
-.inputBox {
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
-  justify-content: space-between;
-  /* Add this to evenly space the elements */
-  margin-bottom: 10px;
-  margin-left: 3px;
-  margin-right: 0.5px;
-}
+
 .heading{
   color: #000000;
 text-align: center;
